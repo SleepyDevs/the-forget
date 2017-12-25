@@ -4,12 +4,14 @@ using UnityEngine;
 
 public class playerSight : MonoBehaviour {
 
-	public bool coli = false;
+
 	public GameObject forgottenObject; // todo : remove
     public Vector3 rayOrigin; // todo : move down to local
 	public GameObject hittedObject; //todo : remove
 	public GameObject viewPoint;
 	public GameObject inView; // todo : remove
+
+	private forgetableObject objectScript;
 
 	/// <summary>
 	/// Start is called on the frame when a script is enabled just before
@@ -25,7 +27,6 @@ public class playerSight : MonoBehaviour {
 	{
         // Destroy(other.gameObject);
 		inView = other.gameObject;
-		Debug.Log("now viewing " + other.gameObject.tag);
 		RaycastHit rayHit;
 		if (other.gameObject.tag == "Forgetable Object") {
 			rayOrigin = viewPoint.transform.position;
@@ -34,10 +35,9 @@ public class playerSight : MonoBehaviour {
             if (Physics.Raycast(ray, out rayHit))
             {
 				hittedObject = rayHit.collider.gameObject;
-				Debug.Log(" ray hit something , " + rayHit.collider.tag);
                 if (rayHit.collider.tag == "Forgetable Object")
                 {
-                    forgetableObject objectScript = other.gameObject.GetComponent<forgetableObject>();
+                    objectScript = other.gameObject.GetComponent<forgetableObject>();
                     if (objectScript != null) 
     			        objectScript.See();
                 }
@@ -51,7 +51,7 @@ public class playerSight : MonoBehaviour {
 		// Destroy(other.gameObject);
 		 if (other.gameObject.tag == "Forgetable Object") {
             forgottenObject = null;
-			forgetableObject objectScript = other.gameObject.GetComponent<forgetableObject>();
+			objectScript = other.gameObject.GetComponent<forgetableObject>();
                if (objectScript != null) 
                     objectScript.NotSee();
 		}

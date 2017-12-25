@@ -14,9 +14,12 @@ public class customCharacterControl : MonoBehaviour {
 	private float vertical;
 	public float fallingSpeed;
 
+	private playerInteractiveField interactiveField;
+
 	// Use this for initialization
 	void Start () {
 		charCon = GetComponent<CharacterController>();
+		interactiveField = GetComponentInChildren<playerInteractiveField>();
 	}
 	
 	// Update is called once per frame
@@ -39,6 +42,11 @@ public class customCharacterControl : MonoBehaviour {
 		if (horizontal != 0 || vertical != 0) {
 			faceDirection = Vector3.RotateTowards(transform.forward , new Vector3(vertical, 0, -horizontal), 0.3f, 0.0f);
 			transform.forward = (faceDirection);
+		}
+
+		if (Input.GetKeyDown(KeyCode.Space)) {
+			// Debug.Log("space");
+			interactiveField.interact();
 		}
 
 	}

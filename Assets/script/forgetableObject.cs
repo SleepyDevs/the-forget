@@ -18,7 +18,7 @@ public class forgetableObject : MonoBehaviour {
 	//########## state variable ###########//
 	/*
 		state 0 is starting state
-		state 1 is ...
+		state 1 is picture state
 		state 2 is ...
 	 */
 	private Vector3[] positionStates;
@@ -51,7 +51,6 @@ public class forgetableObject : MonoBehaviour {
 		if (reset) counter = 0;
 		Fade(1 - counter/forgetTime);
 		if (!remembered) setState(0);
-		Debug.Log(RB.velocity);
 	}
 
 	protected void resetCounter() {
