@@ -10,12 +10,19 @@ public class forgetableObject : MonoBehaviour {
 	public bool remembered = false;		//Todo: change back to private
 	public float counter = 0;		//todo: change back to private
 	public bool seen = false;		//todo: cahnge back to private
-	private Vector3[] positionStates;
-	private Quaternion[] RotationStates;
 
 	private Rigidbody RB;
 
 	public bool reset = false;
+
+	//########## state variable ###########//
+	/*
+		state 0 is starting state
+		state 1 is ...
+		state 2 is ...
+	 */
+	private Vector3[] positionStates;
+	private Quaternion[] RotationStates;
 
     // Use this for initialization
     void Start()
@@ -87,11 +94,10 @@ public class forgetableObject : MonoBehaviour {
 	}
 
 	public void setState(int state) {
-		Vector3 Vec0 = new Vector3(0, 0, 0);
 		switch(state) {
 			case 0 :	transform.position = positionStates[0];
 						transform.rotation = RotationStates[0];
-						RB.velocity = Vec0;
+						RB.velocity = Vector3.zero;
 						break;
 			default:	break;
 		}
