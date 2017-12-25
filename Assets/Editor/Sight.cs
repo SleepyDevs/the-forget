@@ -20,5 +20,8 @@ public class Sight : Editor {
 
 		if (ps.hittedObject != null)
 			Handles.DrawLine(ps.rayOrigin, ps.hittedObject.transform.position);
+
+		if (ps.inView != null) 
+			Handles.DrawLine(ps.rayOrigin, ps.inView.transform.position);
 	}
 }
