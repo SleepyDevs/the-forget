@@ -11,7 +11,7 @@ public class playerSight : MonoBehaviour {
 	public GameObject viewPoint;
 	public GameObject inView; // todo : remove
 
-	private forgetableObject objectScript;
+	private forgettableObject objectScript;
 
 	/// <summary>
 	/// Start is called on the frame when a script is enabled just before
@@ -37,7 +37,7 @@ public class playerSight : MonoBehaviour {
 				hittedObject = rayHit.collider.gameObject;
                 if (rayHit.collider.tag == "Forgetable Object")
                 {
-                    objectScript = other.gameObject.GetComponent<forgetableObject>();
+                    objectScript = other.gameObject.GetComponent<forgettableObject>();
                     if (objectScript != null) 
     			        objectScript.See();
                 }
@@ -51,7 +51,7 @@ public class playerSight : MonoBehaviour {
 		// Destroy(other.gameObject);
 		 if (other.gameObject.tag == "Forgetable Object") {
             forgottenObject = null;
-			objectScript = other.gameObject.GetComponent<forgetableObject>();
+			objectScript = other.gameObject.GetComponent<forgettableObject>();
                if (objectScript != null) 
                     objectScript.NotSee();
 		}

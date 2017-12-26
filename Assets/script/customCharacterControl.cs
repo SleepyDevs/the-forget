@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class customCharacterControl : MonoBehaviour {
 
+	public static customCharacterControl instance;
+
 	public float speed = 10.0f;
 	public float gravity = 2.0f;
 
@@ -12,7 +14,9 @@ public class customCharacterControl : MonoBehaviour {
 	private Vector3 faceDirection;
 	private float horizontal;
 	private float vertical;
-	public float fallingSpeed;
+
+	[SerializeField]
+	private float fallingSpeed;
 
 	private playerInteractiveField interactiveField;
 
@@ -20,6 +24,7 @@ public class customCharacterControl : MonoBehaviour {
 	void Start () {
 		charCon = GetComponent<CharacterController>();
 		interactiveField = GetComponentInChildren<playerInteractiveField>();
+		instance = this;
 	}
 	
 	// Update is called once per frame
@@ -42,6 +47,7 @@ public class customCharacterControl : MonoBehaviour {
 		if (horizontal != 0 || vertical != 0) {
 			faceDirection = Vector3.RotateTowards(transform.forward , new Vector3(vertical, 0, -horizontal), 0.3f, 0.0f);
 			transform.forward = (faceDirection);
+			Debug.Log(transform.forward);
 		}
 
 		if (Input.GetKeyDown(KeyCode.Space)) {
@@ -49,5 +55,14 @@ public class customCharacterControl : MonoBehaviour {
 			interactiveField.interact();
 		}
 
+	}
+
+		// Debug.Log("position = " + transform.position);
+		return transform.position;
+	}
+
+	public Vector3 getFaceDirection() {
+		// Debug.Log("forward : " + transform.forward);
+		return new Vector3(-transform.forward.z, 0, transform.forward.x);
 	}
 }

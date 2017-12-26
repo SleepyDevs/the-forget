@@ -4,21 +4,34 @@ using UnityEngine;
 
 public class boxBehaviour : interactiveObject {
 
-	private playerInteractiveField reachScript;
+	public bool grab = false;
+	private forgettableObject box;
+	private Rigidbody RB;
 
-	private void OnTriggerStay(Collider other) {
-		if (other.gameObject.tag == "player reach") {
-			reachScript = other.gameObject.GetComponent<playerInteractiveField>();
-			if (behaviour != null) reachScript.inReach(behaviour);
-		}
+	private void Start() {
+		box = GetComponent<forgettableObject>();
+		RB = GetComponent<Rigidbody>();
 	}
 
-	private void OnTriggerExit(Collider other) {
-		if (other.gameObject.tag == "player reach") {
-			reachScript = other.gameObject.GetComponent<playerInteractiveField>();
-			reachScript.inReach(null);
-		}
+	public override void interact() {
+		if (box.isRemembered()) toogleGrab();
+		Debug.Log("box behaviour : intereacting to " + gameObject);
 	}
 
-	// public void intereact();
+	private void toogleGrab() {
+		grab = (grab)?false:true;
+	}
+
+	void FixedUpdate() {
+		if (Input.GetKeyDown(KeyCode.Return)) {
+			// Debug.Log("space");
+			Debug.Log("position = " + customCharacterControl.instance.getFaceDirection());
+		}
+		if (grab) {
+			transform.position = customCharacterControl.instance.getPosition() +  3*customCharacterControl.instance.getFaceDirection();
+			transform.forward = customCharacterControl.instance.getFaceDirection();
+			RB.velocity = Vector3.zero;
+		}
+		if (!box.isRemembered()) grab = false;
+	}
 }

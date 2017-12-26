@@ -2,14 +2,19 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class forgetableObject : MonoBehaviour {
+public class forgettableObject : MonoBehaviour {
 
 	private Renderer rend;
-	public float forgetTime = 10;
-	public float rememberTime = 3;
-	public bool remembered = false;		//Todo: change back to private
-	public float counter = 0;		//todo: change back to private
-	public bool seen = false;		//todo: cahnge back to private
+	[SerializeField]
+	private float forgetTime = 10;
+	[SerializeField]
+	private float rememberTime = 3;
+	[SerializeField]
+	private bool remembered = false;		//Todo: change back to private
+	[SerializeField]
+	private float counter = 0;		//todo: change back to private
+	[SerializeField]
+	private bool seen = false;		//todo: cahnge back to private
 
 	private Rigidbody RB;
 
@@ -100,6 +105,10 @@ public class forgetableObject : MonoBehaviour {
 						break;
 			default:	break;
 		}
+	}
+
+	public bool isRemembered() { 
+		return remembered;
 	}
 	
 }
