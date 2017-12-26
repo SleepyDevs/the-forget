@@ -57,6 +57,7 @@ public class customCharacterControl : MonoBehaviour {
 
 	}
 
+	public Vector3 getPosition() {
 		// Debug.Log("position = " + transform.position);
 		return transform.position;
 	}
