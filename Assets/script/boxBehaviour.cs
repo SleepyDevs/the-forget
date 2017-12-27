@@ -16,7 +16,7 @@ public class boxBehaviour : interactiveObject {
 
 	public override void interact() {
 		if (box.isRemembered()) toogleGrab();
-		Debug.Log("box behaviour : intereacting to " + gameObject);
+		Debug.Log("box behaviour : intereacting to " + gameObject); // todo : remove debug
 	}
 
 	private void toogleGrab() {

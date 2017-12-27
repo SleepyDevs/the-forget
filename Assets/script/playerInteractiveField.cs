@@ -19,7 +19,7 @@ public class playerInteractiveField : MonoBehaviour {
 		else if (objectInReach == null) {
 			objectInReach = obj;
 		}
-		Debug.Log("got this object " + obj);
+		Debug.Log("got this object " + obj);			// todo : remove debug
 	}
 
 	public void interact() {

@@ -5,6 +5,7 @@ using UnityEngine;
 public class switchBehaviour : interactiveObject {
 
 	public bool flip = false;
+	public GameObject destination;
 	
 	private Animator animator;
 
@@ -14,7 +15,8 @@ public class switchBehaviour : interactiveObject {
 
 	public override void interact() {
 		flip = (flip)?false:true;
-		Debug.Log("flipped");
+		Debug.Log("flipped");				// todo : remvoe debug
+		if (destination != null) destination.GetComponent<doorBehaviour>().flip();
 		animator.SetBool("flip", flip);
 	}
 
