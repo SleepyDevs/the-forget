@@ -13,12 +13,15 @@ public class playerInteractiveField : MonoBehaviour {
 		objectInReach = null;
 		instance = this;
 	}
-	
+
 	public void inReach(interactiveObject obj) {
-		objectInReach = obj;
+		if (objectInReach == obj) objectInReach = null;
+		else if (objectInReach == null) {
+			objectInReach = obj;
+		}
 		Debug.Log("got this object " + obj);
 	}
-	
+
 	public void interact() {
 		if (objectInReach != null) {
 			// Debug.Log("intereacting to " + objectInReach);

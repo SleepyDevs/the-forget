@@ -52,7 +52,7 @@ public class customCharacterControl : MonoBehaviour {
 		}
 
 		if (Input.GetKeyDown(KeyCode.Space)) {
-			// Debug.Log("space");
+			Debug.Log("space");
 			interactiveField.interact();
 		}
 

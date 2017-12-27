@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class boxBehaviour : interactiveObject {
 
+	[SerializeField]
 	private bool grab = false;
 	private forgettableObject box;
 	private Rigidbody RB;

@@ -12,7 +12,7 @@ public abstract class interactiveObject : MonoBehaviour {
 
 	public void OnTriggerExit(Collider other) {
 		if (other.gameObject.tag == "player reach") {
-			playerInteractiveField.instance.inReach(null);
+			playerInteractiveField.instance.inReach(this);
 		}
 	}
 
