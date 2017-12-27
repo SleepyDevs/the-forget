@@ -47,7 +47,7 @@ public class customCharacterControl : MonoBehaviour {
 		if (horizontal != 0 || vertical != 0) {
 			faceDirection = Vector3.RotateTowards(transform.forward , new Vector3(vertical, 0, -horizontal), 0.3f, 0.0f);
 			transform.forward = (faceDirection);
-			Debug.Log(transform.forward);
+			// Debug.Log(transform.forward);
 		}
 
 		if (Input.GetKeyDown(KeyCode.Space)) {
