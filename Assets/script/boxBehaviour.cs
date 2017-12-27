@@ -23,10 +23,6 @@ public class boxBehaviour : interactiveObject {
 	}
 
 	void FixedUpdate() {
-		if (Input.GetKeyDown(KeyCode.Return)) {
-			// Debug.Log("space");
-			Debug.Log("position = " + customCharacterControl.instance.getFaceDirection());
-		}
 		if (grab) {
 			transform.position = customCharacterControl.instance.getPosition() +  3*customCharacterControl.instance.getFaceDirection();
 			transform.forward = customCharacterControl.instance.getFaceDirection();

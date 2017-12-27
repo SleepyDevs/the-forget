@@ -24,7 +24,8 @@ public class customCharacterControl : MonoBehaviour {
 	void Start () {
 		charCon = GetComponent<CharacterController>();
 		interactiveField = GetComponentInChildren<playerInteractiveField>();
-		instance = this;
+		if (instance == null) instance = this;
+		else if (instance != this) Destroy(gameObject);
 	}
 	
 	// Update is called once per frame

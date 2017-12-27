@@ -33,6 +33,9 @@ public class forgettableObject : MonoBehaviour {
     void Start()
     {
         rend = GetComponent<Renderer>();
+		if (rend == null) {
+			rend = GetComponentInChildren<Renderer>();
+		}
         rend.material.shader = Shader.Find("Custom/TextureMixShader");
         counter = forgetTime;
 		positionStates = new Vector3[3];
@@ -41,6 +44,9 @@ public class forgettableObject : MonoBehaviour {
 		RotationStates[0] = transform.rotation;
 
 		RB = GetComponent<Rigidbody>();
+		if (RB == null) {
+			RB = GetComponentInChildren<Rigidbody>();
+		}
     }
 
 	// Update is called once per frame
@@ -101,7 +107,7 @@ public class forgettableObject : MonoBehaviour {
 		switch(state) {
 			case 0 :	transform.position = positionStates[0];
 						transform.rotation = RotationStates[0];
-						RB.velocity = Vector3.zero;
+						if (RB != null) RB.velocity = Vector3.zero;
 						break;
 			default:	break;
 		}
