@@ -81,3 +81,5 @@ $RECYCLE.BIN/
 # Windows shortcuts
 *.lnk
 Assets/@Themes.meta
+*.blend1
+*.blend1.meta
