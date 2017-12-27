@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class doorBehaviour : MonoBehaviour {
+public class doorBehaviour : switchDestination {
 
 	[SerializeField]
 	private bool doorOpen = false;
@@ -27,7 +27,7 @@ public class doorBehaviour : MonoBehaviour {
 		anim.SetBool("open", false);
 	}
 
-	public void flip() {
+	public override void flip() {
 		if (doorOpen) {
 			closeTheDoor();
 		}

@@ -16,7 +16,7 @@ public class switchBehaviour : interactiveObject {
 	public override void interact() {
 		flip = (flip)?false:true;
 		Debug.Log("flipped");				// todo : remvoe debug
-		if (destination != null) destination.GetComponent<doorBehaviour>().flip();
+		if (destination != null) destination.GetComponent<switchDestination>().flip();
 		animator.SetBool("flip", flip);
 	}
 
