@@ -216,7 +216,7 @@ GameObject:
   - component: {fileID: 281571380}
   m_Layer: 0
   m_Name: colorObject
-  m_TagString: Forgetable Object
+  m_TagString: Forgettable Object
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -311,6 +311,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 27dff61f71b450d4f83080617fa6e1ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rend: []
   forgetTime: 3
   rememberTime: 1
   remembered: 0
@@ -441,6 +442,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e4a60d805498df48ad40661cb0fe79e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  objectInReach: {fileID: 0}
 --- !u!65 &662650490
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -518,7 +520,7 @@ GameObject:
   - component: {fileID: 872581401}
   m_Layer: 0
   m_Name: switch
-  m_TagString: Forgetable Object
+  m_TagString: Forgettable Object
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -607,6 +609,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 27dff61f71b450d4f83080617fa6e1ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rend: []
   forgetTime: 2
   rememberTime: 1
   remembered: 0

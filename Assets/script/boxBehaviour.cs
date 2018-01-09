@@ -15,7 +15,8 @@ public class boxBehaviour : interactiveObject {
 	}
 
 	public override void interact() {
-		if (box.isRemembered()) toogleGrab();
+		// if (box.isRemembered()) toogleGrab();
+		toogleGrab();
 		Debug.Log("box behaviour : intereacting to " + gameObject); // todo : remove debug
 	}
 
@@ -29,6 +30,9 @@ public class boxBehaviour : interactiveObject {
 			transform.forward = customCharacterControl.instance.getFaceDirection();
 			RB.velocity = Vector3.zero;
 		}
-		if (!box.isRemembered()) grab = false;
+		if (!box.isRemembered()) { 
+			grab = false; 
+			box.setState(0);
+		}
 	}
 }

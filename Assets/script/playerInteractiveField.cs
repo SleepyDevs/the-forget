@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class playerInteractiveField : MonoBehaviour {
 
+	[SerializeField]
 	private interactiveObject objectInReach;
 
 	public static playerInteractiveField instance;
@@ -25,7 +26,11 @@ public class playerInteractiveField : MonoBehaviour {
 	public void interact() {
 		if (objectInReach != null) {
 			// Debug.Log("intereacting to " + objectInReach);
-			objectInReach.interact();
+			if (objectInReach.gameObject.tag == "Forgettable Object") {
+				if (objectInReach.gameObject.GetComponent<forgettableObject>().isRemembered())
+					objectInReach.interact();
+			}
+			else objectInReach.interact();
 		} else {
 			// Debug.Log("it's null JIM!");
 		}

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class interactiveObject : MonoBehaviour {
+public abstract class interactiveObject : MonoBehaviour {	
 
 	public void OnTriggerEnter(Collider other) {
 		if (other.gameObject.tag == "player reach") {

@@ -27,8 +27,8 @@ public class doorBehaviour : switchDestination {
 		anim.SetBool("open", false);
 	}
 
-	public override void flip() {
-		if (doorOpen) {
+	public override void flip(bool side) {
+		if (!side) {
 			closeTheDoor();
 		}
 		else {

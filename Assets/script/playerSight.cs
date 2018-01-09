@@ -28,14 +28,14 @@ public class playerSight : MonoBehaviour {
         // Destroy(other.gameObject);
 		inView = other.gameObject;
 		RaycastHit rayHit;
-		if (other.gameObject.tag == "Forgetable Object") {
+		if (other.gameObject.tag == "Forgettable Object") {
 			rayOrigin = viewPoint.transform.position;
 			forgottenObject = other.gameObject;
             Ray ray = new Ray(rayOrigin , other.gameObject.transform.position - rayOrigin);
             if (Physics.Raycast(ray, out rayHit))
             {
 				hittedObject = rayHit.collider.gameObject;
-                if (rayHit.collider.tag == "Forgetable Object")
+                if (rayHit.collider.tag == "Forgettable Object")
                 {
                     objectScript = other.gameObject.GetComponent<forgettableObject>();
                     if (objectScript != null) 
@@ -49,7 +49,7 @@ public class playerSight : MonoBehaviour {
 	{
         
 		// Destroy(other.gameObject);
-		 if (other.gameObject.tag == "Forgetable Object") {
+		 if (other.gameObject.tag == "Forgettable Object") {
             forgottenObject = null;
 			objectScript = other.gameObject.GetComponent<forgettableObject>();
                if (objectScript != null) 

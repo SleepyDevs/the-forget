@@ -8,15 +8,20 @@ public class switchBehaviour : interactiveObject {
 	public GameObject destination;
 	
 	private Animator animator;
+	private forgettableObject forgetScript;
 
 	private void Start() {
 		animator = GetComponent<Animator>();
+		forgetScript = GetComponent<forgettableObject>();
 	}
 
 	public override void interact() {
 		flip = (flip)?false:true;
 		Debug.Log("flipped");				// todo : remvoe debug
-		if (destination != null) destination.GetComponent<switchDestination>().flip();
+		if (destination != null) {
+			if (flip) destination.GetComponent<switchDestination>().flip(switchDestination.OPEN);
+			else destination.GetComponent<switchDestination>().flip(switchDestination.CLOSE);
+		}
 		animator.SetBool("flip", flip);
 	}
 
@@ -25,7 +30,12 @@ public class switchBehaviour : interactiveObject {
 	/// </summary>
 	void Update()
 	{
-		animator.SetBool("flip", flip);
+		if (!forgetScript.isRemembered()) {
+			forgetScript.setState(0);
+			flip = false;
+			animator.SetBool("flip", flip);
+			destination.GetComponent<switchDestination>().flip(switchDestination.CLOSE);
+		}
 	}
 	
 }

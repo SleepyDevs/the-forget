@@ -4,15 +4,15 @@ using UnityEngine;
 
 public class forgettableObject : MonoBehaviour {
 
-	private Renderer rend;
+	public Renderer[] rend;
 	[SerializeField]
-	private float forgetTime = 10;
+	private float forgetTime = 10f;
 	[SerializeField]
-	private float rememberTime = 3;
+	private float rememberTime = 3f;
 	[SerializeField]
 	private bool remembered = false;		//Todo: change back to private
 	[SerializeField]
-	private float counter = 0;		//todo: change back to private
+	private float counter = 0f;		//todo: change back to private
 	[SerializeField]
 	private bool seen = false;		//todo: cahnge back to private
 
@@ -32,11 +32,16 @@ public class forgettableObject : MonoBehaviour {
     // Use this for initialization
     void Start()
     {
-        rend = GetComponent<Renderer>();
-		if (rend == null) {
-			rend = GetComponentInChildren<Renderer>();
+		rend = new Renderer[1];
+        rend[0] = GetComponent<Renderer>();
+		if (rend[0] == null) {
+			rend = new Renderer[transform.childCount];
+			// rend = GetComponentInChildren<Renderer>();		
+			for (int nchild = 0 ; nchild < transform.childCount; nchild++) {
+				rend[nchild] = transform.GetChild(nchild).GetComponent<Renderer>();
+			}
 		}
-        rend.material.shader = Shader.Find("Custom/TextureMixShader");
+        // rend.material.shader = Shader.Find("Custom/TextureMixShader");
         counter = forgetTime;
 		positionStates = new Vector3[3];
 		RotationStates = new Quaternion[3];
@@ -61,7 +66,6 @@ public class forgettableObject : MonoBehaviour {
 		}
 		if (reset) counter = 0;
 		Fade(1 - counter/forgetTime);
-		if (!remembered) setState(0);
 	}
 
 	protected void resetCounter() {
@@ -92,7 +96,12 @@ public class forgettableObject : MonoBehaviour {
 	}
 
 	private void Fade(float fadefactor) {
-		rend.material.SetFloat("_TexToGray", fadefactor);
+		if (rend == null) Debug.Log("IT'S NULL, JIM!"); 
+		foreach (Renderer rdd in rend) {
+			rdd.material.SetFloat("_TexToGray", fadefactor);
+		}
+		// rend.material.SetFloat("_TexToGray", fadefactor);
+		
 	}
 
 	public void See() {
@@ -108,6 +117,7 @@ public class forgettableObject : MonoBehaviour {
 			case 0 :	transform.position = positionStates[0];
 						transform.rotation = RotationStates[0];
 						if (RB != null) RB.velocity = Vector3.zero;
+						
 						break;
 			default:	break;
 		}
