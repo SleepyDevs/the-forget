@@ -212,6 +212,7 @@ GameObject:
   - component: {fileID: 281571375}
   - component: {fileID: 281571374}
   - component: {fileID: 281571378}
+  - component: {fileID: 281571379}
   - component: {fileID: 281571380}
   m_Layer: 0
   m_Name: colorObject
@@ -299,6 +300,24 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &281571379
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 281571373}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 27dff61f71b450d4f83080617fa6e1ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rend: []
+  forgetTime: 3
+  rememberTime: 1
+  remembered: 0
+  counter: 0
+  seen: 0
+  reset: 0
 --- !u!114 &281571380
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -310,13 +329,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4292f1081a42ce74d965c871a64bae88, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rend: []
-  forgetTime: 3
-  rememberTime: 1
-  remembered: 0
-  counter: 0
-  seen: 0
-  reset: 0
   grab: 0
 --- !u!1 &290211183
 GameObject:
@@ -502,6 +514,7 @@ GameObject:
   m_Component:
   - component: {fileID: 872581397}
   - component: {fileID: 872581400}
+  - component: {fileID: 872581402}
   - component: {fileID: 872581399}
   - component: {fileID: 872581398}
   - component: {fileID: 872581401}
@@ -550,13 +563,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e352c95b17194c144b36e9e3193f4e44, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rend: []
-  forgetTime: 2
-  rememberTime: 1
-  remembered: 0
-  counter: 0
-  seen: 0
-  reset: 0
   flip: 0
   destination: {fileID: 1630678731}
 --- !u!95 &872581400
@@ -592,6 +598,24 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 0
+--- !u!114 &872581402
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 872581396}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 27dff61f71b450d4f83080617fa6e1ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rend: []
+  forgetTime: 2
+  rememberTime: 1
+  remembered: 0
+  counter: 0
+  seen: 0
+  reset: 0
 --- !u!1 &920628160
 GameObject:
   m_ObjectHideFlags: 0
