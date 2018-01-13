@@ -8,11 +8,10 @@ public class switchBehaviour : interactiveObject {
 	public GameObject destination;
 	
 	private Animator animator;
-	private forgettableObject forgetScript;
 
-	private void Start() {
+	void Start() {
 		animator = GetComponent<Animator>();
-		forgetScript = GetComponent<forgettableObject>();
+		base.forgetInit();
 	}
 
 	public override void interact() {
@@ -25,17 +24,18 @@ public class switchBehaviour : interactiveObject {
 		animator.SetBool("flip", flip);
 	}
 
-	/// <summary>
-	/// Update is called every frame, if the MonoBehaviour is enabled.
-	/// </summary>
-	void Update()
-	{
-		if (!forgetScript.isRemembered()) {
-			forgetScript.setState(0);
-			flip = false;
-			animator.SetBool("flip", flip);
-			destination.GetComponent<switchDestination>().flip(switchDestination.CLOSE);
-		}
+	protected override void state0() {
+		flip = false;
+		animator.SetBool("flip", flip);
+		destination.GetComponent<switchDestination>().flip(switchDestination.CLOSE);
+	}
+
+	protected override void state1() {
+
+	}
+
+	protected override void state2() {
+
 	}
 	
 }

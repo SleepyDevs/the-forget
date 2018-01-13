@@ -6,12 +6,9 @@ public class boxBehaviour : interactiveObject {
 
 	[SerializeField]
 	private bool grab = false;
-	private forgettableObject box;
-	private Rigidbody RB;
 
-	private void Start() {
-		box = GetComponent<forgettableObject>();
-		RB = GetComponent<Rigidbody>();
+	void Start() {
+		base.forgetInit();
 	}
 
 	public override void interact() {
@@ -30,9 +27,20 @@ public class boxBehaviour : interactiveObject {
 			transform.forward = customCharacterControl.instance.getFaceDirection();
 			RB.velocity = Vector3.zero;
 		}
-		if (!box.isRemembered()) { 
-			grab = false; 
-			box.setState(0);
-		}
+	}
+
+	protected override void state0() {
+		transform.position = positionStates[0];
+		transform.rotation = RotationStates[0];
+		if (RB != null) RB.velocity = Vector3.zero;
+		grab = false;
+	}
+
+	protected override void state1() {
+		
+	}
+
+	protected override void state2() {
+
 	}
 }

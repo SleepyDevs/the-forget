@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class forgettableObject : MonoBehaviour {
+public abstract class forgettableObject : MonoBehaviour {
 
 	public Renderer[] rend;
 	[SerializeField]
@@ -16,7 +16,7 @@ public class forgettableObject : MonoBehaviour {
 	[SerializeField]
 	private bool seen = false;		//todo: cahnge back to private
 
-	private Rigidbody RB;
+	protected Rigidbody RB;
 
 	public bool reset = false;
 
@@ -26,11 +26,11 @@ public class forgettableObject : MonoBehaviour {
 		state 1 is picture state
 		state 2 is ...
 	 */
-	private Vector3[] positionStates;
-	private Quaternion[] RotationStates;
+	protected Vector3[] positionStates;
+	protected Quaternion[] RotationStates;
 
     // Use this for initialization
-    void Start()
+    protected void forgetInit()
     {
 		rend = new Renderer[1];
         rend[0] = GetComponent<Renderer>();
@@ -66,6 +66,7 @@ public class forgettableObject : MonoBehaviour {
 		}
 		if (reset) counter = 0;
 		Fade(1 - counter/forgetTime);
+		if (!isRemembered()) setState(0);
 	}
 
 	protected void resetCounter() {
@@ -114,11 +115,12 @@ public class forgettableObject : MonoBehaviour {
 
 	public void setState(int state) {
 		switch(state) {
-			case 0 :	transform.position = positionStates[0];
-						transform.rotation = RotationStates[0];
-						if (RB != null) RB.velocity = Vector3.zero;
-						
-						break;
+			// case 0 :	transform.position = positionStates[0];
+						// transform.rotation = RotationStates[0];
+						// if (RB != null) RB.velocity = Vector3.zero;
+			case 0 :	state0(); break;
+			case 1 : 	state1(); break;
+			case 2 : 	state2(); break;
 			default:	break;
 		}
 	}
@@ -126,5 +128,8 @@ public class forgettableObject : MonoBehaviour {
 	public bool isRemembered() { 
 		return remembered;
 	}
-	
+
+	protected abstract void state0();
+	protected abstract void state1();
+	protected abstract void state2();
 }
