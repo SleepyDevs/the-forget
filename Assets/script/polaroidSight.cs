@@ -46,9 +46,16 @@ public class polaroidSight : MonoBehaviour {
 
 	public void recordState1() {
 		picState[1].Clear();
-		foreach (GameObject gameObject in objectInSight) {
-			gameObject.GetComponent<forgettableObject>().recordState1();
-			picState[1].Add(gameObject);
+		RaycastHit raycastHit;
+		foreach (GameObject gameObj in objectInSight) {
+			rayOrigin = viewPoint.transform.position;
+			Ray ray = new Ray(rayOrigin, gameObj.transform.position-rayOrigin);
+			if (Physics.Raycast(ray, out raycastHit)) {
+				if (raycastHit.collider.gameObject == gameObj) {
+					gameObj.GetComponent<forgettableObject>().recordState1();
+					picState[1].Add(gameObj);
+				}
+			}
 		}
 	}
 

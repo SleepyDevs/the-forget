@@ -35,7 +35,7 @@ public class playerSight : MonoBehaviour {
             if (Physics.Raycast(ray, out rayHit))
             {
 				hittedObject = rayHit.collider.gameObject;
-                if (rayHit.collider.tag == "Forgettable Object")
+                if (rayHit.collider.gameObject == other.gameObject)
                 {
                     objectScript = other.gameObject.GetComponent<forgettableObject>();
                     if (objectScript != null) 

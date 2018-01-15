@@ -12,7 +12,7 @@ public abstract class interactiveObject : forgettableObject {
 
 	public void OnTriggerExit(Collider other) {
 		if (other.gameObject.tag == "player reach") {
-			playerInteractiveField.instance.inReach(this);
+			playerInteractiveField.instance.outReach(this);
 		}
 	}
 

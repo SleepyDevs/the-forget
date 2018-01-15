@@ -52,6 +52,7 @@ public class boxBehaviour : interactiveObject {
 	protected override void state1() {
 		transform.position = positionStates[1];
 		transform.rotation = RotationStates[1];
+		if (RB != null) RB.velocity = Vector3.zero;
 		grab = false;
 	}
 

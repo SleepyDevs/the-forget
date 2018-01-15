@@ -16,11 +16,14 @@ public class playerInteractiveField : MonoBehaviour {
 	}
 
 	public void inReach(interactiveObject obj) {
-		if (objectInReach == obj) objectInReach = null;
-		else if (objectInReach == null) {
+		if (objectInReach == null) {
 			objectInReach = obj;
 		}
 		Debug.Log("got this object " + obj);			// todo : remove debug
+	}
+
+	public void outReach(interactiveObject obj) {
+		if (objectInReach == obj) objectInReach = null;
 	}
 
 	public void interact() {
