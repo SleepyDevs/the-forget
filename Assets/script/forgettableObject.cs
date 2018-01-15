@@ -4,8 +4,6 @@ using UnityEngine;
 
 public abstract class forgettableObject : MonoBehaviour {
 
-	protected readonly int nState = 3;
-
 	public Renderer[] rend;
 	[SerializeField]
 	private float forgetTime = 10f;
@@ -113,7 +111,7 @@ public abstract class forgettableObject : MonoBehaviour {
 		return remembered;
 	}
 
-	protected void remind() {
+	public void remind() {
 		counter = forgetTime;
 		remembered = true;
 	}

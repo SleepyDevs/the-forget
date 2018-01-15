@@ -19,11 +19,13 @@ public class customCharacterControl : MonoBehaviour {
 	private float fallingSpeed;
 
 	private playerInteractiveField interactiveField;
+	private polaroidSight cameraField;
 
 	// Use this for initialization
 	void Start () {
 		charCon = GetComponent<CharacterController>();
 		interactiveField = GetComponentInChildren<playerInteractiveField>();
+		cameraField = GetComponentInChildren<polaroidSight>();
 		if (instance == null) instance = this;
 		else if (instance != this) Destroy(gameObject);
 	}
@@ -54,6 +56,13 @@ public class customCharacterControl : MonoBehaviour {
 		if (Input.GetKeyDown(KeyCode.Space)) {
 			Debug.Log("space");						// todo : remove debug
 			interactiveField.interact();
+		}
+
+		if (Input.GetKeyDown(KeyCode.C)) {
+			cameraField.recordState1();
+		}
+		if (Input.GetKeyDown(KeyCode.X)) {
+			cameraField.setState1();
 		}
 
 	}

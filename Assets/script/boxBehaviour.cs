@@ -18,8 +18,8 @@ public class boxBehaviour : interactiveObject {
 
 	void Start() {
 		base.forgetInit();
-		positionStates = new Vector3[nState];
-		RotationStates = new Quaternion[nState];
+		positionStates = new Vector3[GameVariable.NumberOfState];
+		RotationStates = new Quaternion[GameVariable.NumberOfState];
 		positionStates[0] = transform.position;
 		RotationStates[0] = transform.rotation;
 	}

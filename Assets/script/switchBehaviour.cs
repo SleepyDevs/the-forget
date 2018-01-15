@@ -19,7 +19,7 @@ public class switchBehaviour : interactiveObject {
 
 	void Start() {
 		animator = GetComponent<Animator>();
-		flipState = new bool[nState];
+		flipState = new bool[GameVariable.NumberOfState];
 		flipState[0] = false;
 		base.forgetInit();
 	}
