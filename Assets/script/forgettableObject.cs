@@ -4,7 +4,7 @@ using UnityEngine;
 
 public abstract class forgettableObject : MonoBehaviour {
 
-	public Renderer[] rend;
+	public List<Renderer> rend;
 	[SerializeField]
 	private float forgetTime = 10f;
 	[SerializeField]
@@ -30,13 +30,14 @@ public abstract class forgettableObject : MonoBehaviour {
     // Use this for initialization
     protected void forgetInit()
     {
-		rend = new Renderer[1];
-        rend[0] = GetComponent<Renderer>();
+		rend = new List<Renderer>();
+        rend.Add(GetComponent<Renderer>());
 		if (rend[0] == null) {
-			rend = new Renderer[transform.childCount];
+			rend.Clear();
+			// rend = new Renderer[transform.childCount];
 			// rend = GetComponentInChildren<Renderer>();		
 			for (int nchild = 0 ; nchild < transform.childCount; nchild++) {
-				rend[nchild] = transform.GetChild(nchild).GetComponent<Renderer>();
+				rend.Add(transform.GetChild(nchild).GetComponent<Renderer>());
 			}
 		}
         // rend.material.shader = Shader.Find("Custom/TextureMixShader");

@@ -23,6 +23,9 @@ public class switchBehaviour : interactiveObject {
 		flipState = new bool[GameVariable.NumberOfState];
 		flipState[0] = false;
 		base.forgetInit();
+		for (int i = 0; i<transform.childCount; i++) {
+			rend.Add(destination.transform.GetChild(i).GetComponent<Renderer>());
+		}
 	}
 
 	public override void interact() {
