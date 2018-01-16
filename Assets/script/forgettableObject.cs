@@ -4,6 +4,8 @@ using UnityEngine;
 
 public abstract class forgettableObject : MonoBehaviour {
 
+	protected readonly int nState = 3;
+
 	public Renderer[] rend;
 	[SerializeField]
 	private float forgetTime = 10f;
@@ -23,11 +25,9 @@ public abstract class forgettableObject : MonoBehaviour {
 	//########## state variable ###########//
 	/*
 		state 0 is starting state
-		state 1 is picture state
-		state 2 is ...
+		state 1 is pictured state 1
+		state 2 is pictured state 2
 	 */
-	protected Vector3[] positionStates;
-	protected Quaternion[] RotationStates;
 
     // Use this for initialization
     protected void forgetInit()
@@ -43,10 +43,6 @@ public abstract class forgettableObject : MonoBehaviour {
 		}
         // rend.material.shader = Shader.Find("Custom/TextureMixShader");
         counter = forgetTime;
-		positionStates = new Vector3[3];
-		RotationStates = new Quaternion[3];
-		positionStates[0] = transform.position;
-		RotationStates[0] = transform.rotation;
 
 		RB = GetComponent<Rigidbody>();
 		if (RB == null) {
@@ -112,12 +108,18 @@ public abstract class forgettableObject : MonoBehaviour {
 	public void NotSee() {
 		seen = false;
 	}
+	
+	public bool isRemembered() { 
+		return remembered;
+	}
+
+	protected void remind() {
+		counter = forgetTime;
+		remembered = true;
+	}
 
 	public void setState(int state) {
 		switch(state) {
-			// case 0 :	transform.position = positionStates[0];
-						// transform.rotation = RotationStates[0];
-						// if (RB != null) RB.velocity = Vector3.zero;
 			case 0 :	state0(); break;
 			case 1 : 	state1(); break;
 			case 2 : 	state2(); break;
@@ -125,11 +127,10 @@ public abstract class forgettableObject : MonoBehaviour {
 		}
 	}
 
-	public bool isRemembered() { 
-		return remembered;
-	}
-
 	protected abstract void state0();
 	protected abstract void state1();
 	protected abstract void state2();
+
+	public abstract void recordState1();
+	public abstract void recordState2();
 }
