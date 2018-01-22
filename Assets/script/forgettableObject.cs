@@ -28,7 +28,7 @@ public abstract class forgettableObject : MonoBehaviour {
 	 */
 
     // Use this for initialization
-    protected void forgetInit()
+    protected void Awake()
     {
 		rend = new List<Renderer>();
         rend.Add(GetComponent<Renderer>());

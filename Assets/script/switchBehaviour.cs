@@ -22,7 +22,6 @@ public class switchBehaviour : interactiveObject {
 		animator = GetComponent<Animator>();
 		flipState = new bool[GameVariable.NumberOfState];
 		flipState[0] = false;
-		base.forgetInit();
 		for (int i = 0; i<transform.childCount; i++) {
 			rend.Add(destination.transform.GetChild(i).GetComponent<Renderer>());
 		}
@@ -46,11 +45,13 @@ public class switchBehaviour : interactiveObject {
 	protected override void state1() {
 		flip = flipState[1];
 		animator.SetBool("flip", flip);
+		destination.GetComponent<switchDestination>().flip(flip);
 	}
 
 	protected override void state2() {
 		flip = flipState[2];
 		animator.SetBool("flip", flip);
+		destination.GetComponent<switchDestination>().flip(flip);
 	}
 
 	public override void recordState1() {

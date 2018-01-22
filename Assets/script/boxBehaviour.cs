@@ -16,12 +16,14 @@ public class boxBehaviour : interactiveObject {
 	private Vector3[] positionStates;
 	private Quaternion[] RotationStates;
 
-	void Start() {
-		base.forgetInit();
+	private Vector3 heightOffset;
+
+	void Start() {				
 		positionStates = new Vector3[GameVariable.NumberOfState];
 		RotationStates = new Quaternion[GameVariable.NumberOfState];
 		positionStates[0] = transform.position;
 		RotationStates[0] = transform.rotation;
+		heightOffset = new Vector3(0, GetComponent<Collider>().bounds.size.y/2, 0);
 	}
 
 	public override void interact() {
@@ -36,7 +38,7 @@ public class boxBehaviour : interactiveObject {
 
 	void FixedUpdate() {
 		if (grab) {
-			transform.position = customCharacterControl.instance.getPosition() +  3*customCharacterControl.instance.getFaceDirection();
+			transform.position = heightOffset + customCharacterControl.instance.getPosition() +  3*customCharacterControl.instance.getFaceDirection();
 			transform.forward = customCharacterControl.instance.getFaceDirection();
 			RB.velocity = Vector3.zero;
 		}
